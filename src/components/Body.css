@@ -1,0 +1,24 @@
+.body-parent{
+    background: rgb(80,178,226);
+background: linear-gradient(184deg, rgba(80,178,226,0.9724264705882353) 50%, rgba(41,102,131,0.9724264705882353) 100%);
+/* background: rgb(0,125,185);
+background: linear-gradient(184deg, rgba(0,125,185,1) 50%, rgba(0,125,185,1) 100%); */
+border-radius: 20px;
+
+}
+.btn1 button{
+    border-radius: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+   .body-parent{
+    width: 90%;
+    margin: 0 auto;
+
+   } 
+   .image1{
+    width: 50%;
+    margin: 0 auto;
+   }
+   
+}

@@ -1,0 +1,9 @@
+.home-parent{
+    background: rgb(80,178,226);
+    background: linear-gradient(184deg, rgba(80,178,226,0.9724264705882353) 50%, rgba(41,102,131,0.9724264705882353) 100%);
+    border-radius: 20px;
+}
+
+.Inp input{
+    border-radius: 25px;
+}
