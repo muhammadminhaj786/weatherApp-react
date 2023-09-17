@@ -1,11 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Body.css'
+import HomeScr from './HomeScr'
+import { Link } from 'react-router-dom'
 
 const Body = ({cloudSrc}) => {
-  
-  function handleUi (){
-    
-  } 
 
   return (
     <>
@@ -21,8 +19,10 @@ const Body = ({cloudSrc}) => {
           </span>
         </h1>
       </div>
-      <div className="btn1 w-[50%] mx-auto mt-7" >
-        <button onClick={handleUi} className='h-[50px] bg-[#ffcc07] w-[100%] text-white text-xl'>Get Started</button>
+      <div className="btn1 w-[55%] mx-auto mt-7" >
+        <div className='btn-div text-center pt-3 h-[60px] bg-[#ffcc07] w-[100%] text-white text-xl'>
+          <Link to='Home' className='text-center'>Get Started</Link></div>
+        {/* <button onClick={()=>setRefresh(!refresh)} className='h-[50px] bg-[#ffcc07] w-[100%] text-white text-xl'>Get Started</button> */}
       </div>
     </div>
 
