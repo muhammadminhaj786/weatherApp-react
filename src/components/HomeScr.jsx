@@ -2,11 +2,20 @@ import React, { useEffect, useState } from 'react'
 import './HomeScr.css'
 import axios from 'axios'
 import Footer from './Footer'
-import cloud from '../assets/weather-map-meteorology-cloud-desktop-wallpaper-png-favpng-7ausECmmP1kR4kgmu2cTeaRa1.jpg'
+import mist from '../assets/mist.png'
+import clouds from '../assets/clouds.png'
+import clear from '../assets/clear.png'
+import rain from '../assets/rain.png'
+import drizzle from '../assets/drizzle.png'
+import win from '../assets/wind.png'
+import hum from '../assets/humidity.png'
+
+
 
 const HomeScr = ({cloudSrc}) => {
     let [input,setInput] = useState('')
     let [data,setData] = useState({})
+    const [timezone, setTimezone] = useState(null);
     useEffect(()=>{
         callApi('karachi')
     },[])
@@ -29,7 +38,17 @@ const HomeScr = ({cloudSrc}) => {
     let imagePath = cloudSrc
 
     if(data?.weather&&data?.weather[0]?.main=="Haze"){
-        imagePath=cloud
+        imagePath=mist
+    }else if(data?.weather&&data?.weather[0]?.main=="Clouds"){
+        imagePath=clouds
+    }else if(data?.weather&&data?.weather[0]?.main=="Clear"){
+        imagePath=clear
+    }else if(data?.weather&&data?.weather[0]?.main=="Rain"){
+        imagePath=rain
+    }else if(data?.weather&&data?.weather[0]?.main=="Drizzle"){
+        imagePath=drizzle
+    }else if(data?.weather&&data?.weather[0]?.main=="Smoke"){
+        imagePath=mist
     }else{
         imagePath = cloudSrc
     }
@@ -42,10 +61,10 @@ const HomeScr = ({cloudSrc}) => {
             onChange={(e)=>setInput(e.target.value)} value={input}  placeholder='Enter a City Name' />
             </form>
         </div>
-        <div className="Times text-center text-white font-bold text-2xl mt-3 mx-auto">
-            {data?.timezone}
-        </div>
-        <div className="icn1 border w-[50%] mt-4 mx-auto">
+        {/* <div className="Times text-center text-white font-bold text-2xl mt-3 mx-auto">
+            <p>Local Time: {formatToLocalTime(data)}</p>
+        </div> */}
+        <div className="icn1 w-[50%] mt-4 mx-auto">
             <img src={imagePath} height={'100px'} width={'100%'} alt="" />
              
         </div>
@@ -60,8 +79,19 @@ const HomeScr = ({cloudSrc}) => {
                 {data?.weather && data?.weather[0].main}
             </p>
         </div>
-        <div className="forecasts h-[10%]">
-            
+        <div className="forecasts flex justify-between pl-2 pr-2 mt-6">
+            <div className='flex '>
+                <img src={win} height={'50px'} width={'50px'} alt="" />
+                <p className='text-center text-white mt-4 ml-2'>
+                    {data?.main?.humidity}
+                </p>
+            </div>
+            <div className='flex'>
+                <img src={hum} height={'50px'} width={'50px'} alt="" />
+                <p className='text-center text-white mt-4 ml-2'>
+                    {data?.wind?.speed}
+                </p>
+            </div>
         </div>
     </div>
   )
